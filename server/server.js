@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const { Server } = require('socket.io');
 const Room = require("./models/Room");
 const cron = require('node-cron');
+require('dotenv').config();
 
 const userCursors = new Map();   
 const roomUsers = new Map();     
@@ -22,7 +23,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/collab-whiteboard', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
