@@ -165,7 +165,7 @@ cron.schedule('0 * * * *', async () => {
   try {
     const result = await Room.deleteMany({ lastActivity: { $lt: cutoff } });
     if (result.deletedCount > 0) {
-      console.log(`🧹 Cleaned up ${result.deletedCount} inactive room(s).`);
+      console.log(`Cleaned up ${result.deletedCount} inactive room(s).`);
     }
   } catch (err) {
     console.error('Cleanup error:', err);
